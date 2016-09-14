@@ -5,4 +5,4 @@ machine:
 test:
   override:
     - android list sdk --all --extended > $CIRCLE_ARTIFACTS/sdkListing.txt
-    - wget https://dl.google.com/android/repository/addons_list-2.xml > $CIRCLE_ARTIFACTS/androidAddonsRepositoryList.txt
+    - wget https://dl.google.com/android/repository/addons_list-2.xml -o $CIRCLE_ARTIFACTS/androidAddonsRepositoryList.txt
