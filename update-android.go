@@ -16,18 +16,16 @@ func main() {
         os.Exit(1)
     }
 
-    xmlFile, err := os.Open(addonListUrl)
-    if err != nil {
-        fmt.Println("Error opening file:", err)
-        return
-    }
-    defer xmlFile.Close()
-
     response, err := http.Get(addonListUrl)
         if err != nil {
                 log.Fatal(err)
         } else {
                 defer response.Body.Close()
+                
+                var q Query
+                xmlFile := response.Body
+                xml.Unmarshal(xmlFile, &q)
+                
                 _, err := io.Copy(os.Stdout, response.Body)
                 if err != nil {
                         log.Fatal(err)
