@@ -1,6 +1,6 @@
 machine:
-  node:
-    version: 4.2.6
+  go:
+    version: 1.6.2
     
 test:
   override:
