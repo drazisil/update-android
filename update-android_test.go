@@ -4,14 +4,14 @@ import "testing"
 
 func TestHello(t *testing.T) {
 	cases := []struct {
-		in, want string
+		want string
 	}{
-		{"hello, world\n", "\ndlrow ,olleh"},
+		{"hello, world\n"},
 	}
 	for _, c := range cases {
-		got := Hello(c.in)
+		got := Hello()
 		if got != c.want {
-			t.Errorf("Hello(%q) == %q, want %q", c.in, got, c.want)
+			t.Errorf("Hello() == %q, want %q", got, c.want)
 		}
 	}
 }
