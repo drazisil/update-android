@@ -3,4 +3,4 @@ test:
     - go get -u github.com/jstemmer/go-junit-report
   post:
     - go test -v | go-junit-report > $CIRCLE_TEST_REPORTS/report.xml
-    - update-android moo
+    - ./update-android moo
