@@ -16,6 +16,14 @@ type Query struct {
     AddonSiteList []AddonSite `xml:"sdk:addon-site>"`
 }
 
+type AddonSite struct {
+    sdk:name string
+    sdk:url string
+}
+
+//        <sdk:name>Google Inc.</sdk:name>
+//        <sdk:url>addon.xml</sdk:url>
+
 func main() {
 	addonListUrl := "https://dl.google.com/android/repository/addons_list-2.xml"
 
