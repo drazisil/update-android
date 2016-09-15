@@ -6,7 +6,15 @@ import (
     "log"
     "net/http"
     "os"
+    "xml"
 )
+
+type Query struct {
+    //Series Show
+    // Have to specify where to find episodes since this
+    // doesn't match the xml tags of the data that needs to go into it
+    AddonSiteList []AddonSite `xml:"sdk:addon-site>"`
+}
 
 func main() {
 	addonListUrl := "https://dl.google.com/android/repository/addons_list-2.xml"
