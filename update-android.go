@@ -17,8 +17,8 @@ type Query struct {
 }
 
 type AddonSite struct {
-    sdk:name string
-    sdk:url string
+     Name  `xml:"sdk:name`
+    Url   string   `xml:"sdk:url`
 }
 
 //        <sdk:name>Google Inc.</sdk:name>
