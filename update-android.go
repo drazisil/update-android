@@ -6,7 +6,7 @@ import (
     "log"
     "net/http"
     "os"
-    "xml"
+    "encoding/xml"
 )
 
 type Query struct {
