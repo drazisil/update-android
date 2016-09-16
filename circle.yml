@@ -1,7 +1,14 @@
 machine:
   node:
-    version: 4.2.6
-    
+    version: 6.4.0
+general:
+  artifacts:
+    - "coverage" # relative to the build directory
+    - "test_results" # relative to the user's home directory
 test:
-  override:
-    - android list sdk --all --extended > $CIRCLE_ARTIFACTS/sdkListing.txt
+  pre:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit
+    - npm install -g
+  post:
+    - cp -R test_results $CIRCLE_TEST_REPORTS/junit
+    - update-android --version

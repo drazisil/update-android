@@ -1,0 +1,41 @@
+{
+  "name": "update-android",
+  "version": "1.0.0",
+  "description": "An independent Android SDK / NDK updater",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "npm run mocha && npm run coverage",
+    "mocha": "mocha -R mocha-multi -O spec=-,xunit=test_results/test-results.xml",
+    "coverage": "istanbul cover --include-all-sources _mocha -- -R spec"
+  },
+  "bin": "bin/update-android.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drazisil/update-android.git"
+  },
+  "keywords": [
+    "android",
+    "sdk"
+  ],
+  "author": "Joseph W Becher <jwbecher@drazisil.com>",
+  "license": "Apache-2.0",
+  "engines": {
+    "npm": "~3.10.3"
+  },
+  "bugs": {
+    "url": "https://github.com/drazisil/update-android/issues"
+  },
+  "homepage": "https://github.com/drazisil/update-android#readme",
+  "dependencies": {
+    "command-line-commands": "^1.0.4",
+    "commander": "^2.9.0",
+    "winston": "^2.2.0",
+    "yargs": "^5.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.0.2",
+    "mocha-multi": "^0.9.1"
+  }
+}
