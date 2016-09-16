@@ -5,6 +5,7 @@
  */
 
 var program = require('commander');
+var updateAndroid = require('../lib/index.js')
 
 program
   .version('0.0.1')
@@ -40,4 +41,5 @@ program
 program.parse(process.argv)
 
 // If no commands here entered, display help
+console.log(updateAndroid.addonListUrl)
 program.help()
