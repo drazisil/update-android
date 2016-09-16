@@ -39,4 +39,4 @@ jspm_packages
 # Others
 .DS_Store
 test_results
-
+update-android.log

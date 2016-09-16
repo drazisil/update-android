@@ -4,43 +4,20 @@
  * Module dependencies.
  */
 
-var program = require('commander');
 var updateAndroid = require('../lib/index.js')
 var packageJson = require('../package.json')
-
-program
-  .version(packageJson.version)
-  // .option('-C, --chdir <path>', 'change the working directory')
-  // .option('-c, --config <path>', 'set config path. defaults to ./deploy.conf')
-  // .option('-T, --no-tests', 'ignore test hook')
-
-program
-  .command('list sdk')
-  .description('run setup commands for all envs')
-  .option("-s, --setup_mode [mode]", "Which setup mode to use")
-  .action(function(env, options){
-    var mode = options.setup_mode || "normal";
-    env = env || 'all';
-    console.log('setup for %s env(s) with %s mode', env, mode);
-  });
-
-program
-  .command('update <cmd>')
-  .alias('ex')
-  .description('execute the given remote cmd')
-  .option("-e, --exec_mode <mode>", "Which exec mode to use")
-  .action(function(cmd, options){
-    console.log('exec "%s" using %s mode', cmd, options.exec_mode);
-  }).on('--help', function() {
-    console.log('  Examples:');
-    console.log();
-    console.log('    $ deploy exec sequential');
-    console.log('    $ deploy exec async');
-    console.log()
-  });
-
-program.parse(process.argv)
-
-// If no commands here entered, display help
-console.log(updateAndroid.addonListUrl)
-program.help()
+const commandLineCommands = require('command-line-commands')
+ 
+const validCommands = [ null, 'list', 'update', 'help', 'version' ]
+try {
+	const { command, argv } = commandLineCommands(validCommands)
+  updateAndroid.processCmd(command, JSON.stringify(argv))
+} catch (err) {
+  if (err.name === 'INVALID_COMMAND') {
+    console.log('moo')
+    process.exit()
+  } else {
+    console.dir(err)
+    process.exit(1)
+  }
+}
