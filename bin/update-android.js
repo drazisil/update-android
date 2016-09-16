@@ -6,9 +6,10 @@
 
 var program = require('commander');
 var updateAndroid = require('../lib/index.js')
+var packageJson = require('../package.json')
 
 program
-  .version('0.0.1')
+  .version(packageJson.version)
   // .option('-C, --chdir <path>', 'change the working directory')
   // .option('-c, --config <path>', 'set config path. defaults to ./deploy.conf')
   // .option('-T, --no-tests', 'ignore test hook')
