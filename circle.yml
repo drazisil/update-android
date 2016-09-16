@@ -2,4 +2,4 @@ test:
   pre:
     - npm install -g
   post:
-    - ./update-android --version
+    - update-android --version
