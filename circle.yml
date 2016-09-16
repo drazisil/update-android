@@ -11,4 +11,5 @@ test:
     - npm install -g
   post:
     - cp -R test_results $CIRCLE_TEST_REPORTS/junit
+    - codeclimate-test-reporter < coverage/lcov.info
     - update-android --version
