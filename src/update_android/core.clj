@@ -80,5 +80,5 @@
       "list" (case (first (rest arguments))
       	"sdk" (println (list-sdk (nthrest arguments 2)))
       	"ndk" (println (list-ndk (nthrest arguments 2)))
-      	(exit 1 arguments))
-      (exit 1 (usage summary)))))
+      	(exit 0 arguments))
+      (exit 0 (usage summary)))))
