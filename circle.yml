@@ -14,6 +14,6 @@ test:
     - codeclimate-test-reporter < coverage/lcov.info
     #- update-android --version
     #- update-android list sdk --all --extended
-    - chmod +x build_executable.sh && ./ build_executable.sh
+    - chmod +x build_executable.sh && ./build_executable.sh
     - chmod +x update-android
     - ./update-android -h
