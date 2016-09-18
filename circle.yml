@@ -10,6 +10,7 @@ test:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit
     #- npm install -g
   post:
+    - lein uberjar
     - cp -R test_results $CIRCLE_TEST_REPORTS/junit
     - codeclimate-test-reporter < coverage/lcov.info
     #- update-android --version
