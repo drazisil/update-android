@@ -1,4 +1,4 @@
-(ns update-android
+(ns update-android.core
   (:require [clojure.tools.cli :refer [parse-opts]])
   (:gen-class))
 
