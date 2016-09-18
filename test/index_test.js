@@ -12,8 +12,8 @@ describe('check functions', function() {
   })})
 
 describe('check urls', function() {
-  it('addonListUrl should be a valid root xml url', function(done) {
-    updateAndroid.addonListUrl.should.equal('https://dl.google.com/android/repository/addons_list-2.xml')
+  it('addonListFile should be a valid root xml url', function(done) {
+    updateAndroid.addonListFile.should.equal('addons_list-2.xml')
     done();
   })
 })
