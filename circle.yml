@@ -1,20 +1,12 @@
-machine:
-  node:
-    version: 6.4.0
 general:
   artifacts:
-    - "coverage" # relative to the build directory
-    - "test_results" # relative to the user's home directory
+    - "target"
+
 test:
-  pre:
-    - mkdir -p $CIRCLE_TEST_REPORTS/junit
-    #- npm install -g
   post:
     - lein uberjar
-    - cp -R test_results $CIRCLE_TEST_REPORTS/junit
-    - codeclimate-test-reporter < coverage/lcov.info
     #- update-android --version
     #- update-android list sdk --all --extended
     - chmod +x build_executable.sh && ./build_executable.sh
     - chmod +x update-android
-    - ./update-android moo
+    - ./update-android list sdk
