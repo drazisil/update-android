@@ -1,3 +1,5 @@
 {
-	"addonListUrl": "https://dl.google.com/android/repository/addons_list-2.xml"
+	"googleSdkSite": "https://dl.google.com/android/repository/",
+	"addonListFile": "addons_list-2.xml",
+	"repositoryFile": "repository-12.xml"
 }

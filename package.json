@@ -28,6 +28,7 @@
   "homepage": "https://github.com/drazisil/update-android#readme",
   "dependencies": {
     "commander": "^2.9.0",
+    "glob": "^7.0.6",
     "winston": "^2.2.0",
     "xml2js": "^0.4.17"
   },
