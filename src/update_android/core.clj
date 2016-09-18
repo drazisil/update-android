@@ -49,9 +49,8 @@
   (str "The following errors occurred while parsing your command:\n\n"
        (string/join \newline errors)))
 
-(defn moo [errors]
-  (str "The following occurred while parsing your command:\n\n"
-       (string/join \newline "moo")))
+(defn moo []
+  (clojure.string/join "" ["The following occurred while parsing your command: " "moo"]))
 
 (defn exit [status msg]
   (println msg)
@@ -66,5 +65,5 @@
       errors (exit 1 (error-msg errors)))
     ;; Execute program with options
     (case (first arguments)
-      "moo" (moo options)
+      "moo" (println (moo))
       (exit 1 (usage summary)))))
