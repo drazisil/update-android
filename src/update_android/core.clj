@@ -1,8 +1,15 @@
 (ns update-android.core
   (:require [clojure.string :as string]
-            [clojure.tools.cli :refer [parse-opts]])
+            [clojure.tools.cli :refer [parse-opts]]
+            [clj-http.client :as client])
   (:import (java.net InetAddress))
   (:gen-class))
+
+(def google-sdk-site-url "https://dl.google.com/android/repository/")
+
+(def google-sdk-repository-filename "repository-12.xml")
+
+(def google-sdk-addon-list-filename "addons_list-2.xml")
 
 (def cli-options
   [;; First three strings describe a short-option, long-option with optional
@@ -49,21 +56,29 @@
   (str "The following errors occurred while parsing your command:\n\n"
        (string/join \newline errors)))
 
-(defn moo []
-  (clojure.string/join "" ["The following occurred while parsing your command: " "moo"]))
-
 (defn exit [status msg]
   (println msg)
   (System/exit status))
+
+(defn list-sdk [options]
+	(let [google-repository-url (str google-sdk-site-url google-sdk-repository-filename)]
+  	(str "You called list sdk with " options "\n"
+  		   (:body (client/get google-repository-url)))))
+
+(defn list-ndk [options]
+  (str "You called list ndk with " options))
 
 (defn -main [& args]
   (let [{:keys [options arguments errors summary]} (parse-opts args cli-options)]
     ;; Handle help and error conditions
     (cond
       (:help options) (exit 0 (usage summary))
-      (not= (count arguments) 1) (exit 1 (usage summary))
+      (< (count arguments) 1) (exit 1 (usage summary))
       errors (exit 1 (error-msg errors)))
     ;; Execute program with options
     (case (first arguments)
-      "moo" (println (moo))
+      "list" (case (first (rest arguments))
+      	"sdk" (println (list-sdk (nthrest arguments 2)))
+      	"ndk" (println (list-ndk (nthrest arguments 2)))
+      	(exit 1 arguments))
       (exit 1 (usage summary)))))
