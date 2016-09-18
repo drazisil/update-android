@@ -17,4 +17,4 @@ test:
     #- update-android list sdk --all --extended
     - chmod +x build_executable.sh && ./build_executable.sh
     - chmod +x update-android
-    - ./update-android -h
+    - ./update-android "moo"
