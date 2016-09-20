@@ -1,7 +1,11 @@
 (ns update-android.core
   (:require [clojure.string :as string]
             [clojure.tools.cli :refer [parse-opts]]
-            [clj-http.client :as client])
+            [clojure.xml :as xml]
+            [clojure.zip :as zip]
+            [clojure.pprint :refer [pprint]]
+            [clojure.data.zip.xml :refer [xml->]]
+            [clojure.java.io :as io])
   (:import (java.net InetAddress))
   (:gen-class))
 
@@ -61,9 +65,11 @@
   (System/exit status))
 
 (defn list-sdk [options]
-	(let [google-repository-url (str google-sdk-site-url google-sdk-repository-filename)]
-  	(str "You called list sdk with " options "\n"
-  		   (:body (client/get google-repository-url)))))
+  (let [google-repository-url "https://dl.google.com/android/repository/repository-12.xml"
+        zipper (zip/xml-zip (xml/parse (io/input-stream google-repository-url)))]
+    (->> (xml-> zipper :tool :archives :archive :url)
+         (map zip/node)
+         (mapcat :content))))
 
 (defn list-ndk [options]
   (str "You called list ndk with " options))

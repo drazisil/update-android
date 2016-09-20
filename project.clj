@@ -5,7 +5,8 @@
             :url "https://opensource.org/licenses/Apache-2.0"}
   :dependencies [[org.clojure/clojure "1.8.0"]
   				 [org.clojure/tools.cli "0.3.5"]
-  				 [clj-http "2.2.0"]]
+  				 [org.clojure/data.xml "0.0.8"]
+                 [org.clojure/data.zip "0.1.2"]]
   :main ^:skip-aot update-android.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
