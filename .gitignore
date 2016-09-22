@@ -3,8 +3,6 @@
 /checkouts
 pom.xml
 pom.xml.asc
-*.jar
-*.class
 /.lein-*
 /.nrepl-port
 .hgignore
@@ -15,3 +13,6 @@ node_modules
 test_results
 update-android
 test.txt
+*.iml
+.idea
+resources/
