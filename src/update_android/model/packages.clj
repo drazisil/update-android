@@ -28,5 +28,5 @@
     (zip/xml-zip (xml/parse (io/input-stream cache-file-addon-list)))
     (let [xml-str (xml/parse (io/input-stream google-repository-url))]
       (cache-write xml-str)
-      zip/xml-zip (xml/parse (io/input-stream cache-file-addon-list)))))
+      (zip/xml-zip (xml/parse (io/input-stream cache-file-addon-list))))))
 
