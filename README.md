@@ -1,23 +1,21 @@
 # update-android
 An independent Android SDK / NDK updator
 
-master: [![CircleCI](https://circleci.com/gh/drazisil/update-android.svg?style=svg)](https://circleci.com/gh/drazisil/update-android) [![Test Coverage](https://codeclimate.com/github/drazisil/update-android/badges/coverage.svg)](https://codeclimate.com/github/drazisil/update-android/coverage)
+master: [![CircleCI](https://circleci.com/gh/drazisil/update-android.svg?style=svg)](https://circleci.com/gh/drazisil/update-android)
 
-FIXME: description
+A replacement for the Android SDK commandline tools, written in Clojure
 
 ## Installation
 
-Download from http://example.com/FIXME.
+https://github.com/drazisil/update-android/releases
 
 ## Usage
 
-FIXME: explanation
-
-    $ java -jar update-android-0.1.0-standalone.jar [args]
+    $ update-android [args]
 
 ## Options
 
-FIXME: listing of options this app accepts.
+None currently
 
 ## Examples
 
@@ -27,9 +25,6 @@ FIXME: listing of options this app accepts.
 
 ...
 
-### Any Other Sections
-### That You Think
-### Might be Useful
 
 ## License
 
