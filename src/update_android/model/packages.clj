@@ -19,14 +19,10 @@
 
 (def cache-file-addon-list "test.txt")
 
-(defn cache-write [package-xml]
-  (with-open [out-file (java.io.FileWriter. cache-file-addon-list)]
-    (xml/emit package-xml out-file)))
-
 (defn cache-fetch []
   (if (.exists (io/file cache-file-addon-list))
-    (zip/xml-zip (xml/parse (io/input-stream cache-file-addon-list)))
-    (let [xml-str (xml/parse (io/input-stream google-repository-url))]
-      (cache-write xml-str)
-      (zip/xml-zip (xml/parse (io/input-stream cache-file-addon-list))))))
+    (zip/xml-zip (xml/parse-str (slurp cache-file-addon-list)))
+    (let [xml-str (slurp google-repository-url)]
+      (spit cache-file-addon-list xml-str)
+      (zip/xml-zip (xml/parse-str xml-str)))))
 
