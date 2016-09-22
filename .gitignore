@@ -13,4 +13,5 @@ pom.xml.asc
 coverage
 node_modules
 test_results
-update-android.log
+update-android
+test.txt
