@@ -12,7 +12,7 @@ var googleBaseURL = "https://dl.google.com/android/repository/"
 var googleRepositoryURL = googleBaseURL + "repository-" + googleRepositoryVersion + " .xml"
 var googleAddonsListURL = googleBaseURL + "addons_list-2.xml"
 
-// An XML structure of a Android SDK addon list
+// AddonsLists is an XML structure of a Android SDK addon list
 type AddonsLists struct {
 	XMLName    xml.Name      `xml:"http://schemas.android.com/sdk/android/addons-list/2 sdk-addons-list"`
 	AddonSite  []*addonSite  `xml:"http://schemas.android.com/sdk/android/addons-list/2 sdk-addon-site"`
@@ -32,12 +32,12 @@ type sysImgSite struct {
 //        <sdk:name>Google Inc.</sdk:name>
 //        <sdk:url>addon.xml</sdk:url>
 
-// Retuns the Android SDK Addons List URL
+// AddonsListURL retuns the Android SDK Addons List URL
 func AddonsListURL() string {
 	return googleAddonsListURL
 }
 
-// Does stuff
+// Init does stuff
 func Init() ([]AddonsLists, error) {
 	var q []AddonsLists
 

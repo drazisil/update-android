@@ -6,7 +6,7 @@ import (
 	"github.com/drazisil/updateandroid"
 )
 
-// Tests HelloWorld
+// TestHelloWorld tests HelloWorld
 func TestHelloWorld(t *testing.T) {
 	if updateandroid.HelloWorld() != "Hello, world.\n" {
 		t.Errorf("%s is not Hello, world.", updateandroid.HelloWorld())

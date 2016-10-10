@@ -2,7 +2,7 @@ package updateandroid
 
 import ()
 
-// Returns Hello, world
+// HelloWorld returns Hello, world
 func HelloWorld() string {
 	return "Hello, world.\n"
 }
