@@ -9,9 +9,10 @@ import (
 
 var googleRepositoryVersion = "12"
 var googleBaseUrl = "https://dl.google.com/android/repository/"
-var googleRepositoryUrl = googleBaseUrl + "repository-" + googleRepositoryVersion + " .xml"
-var googleAddonsListUrl = googleBaseUrl + "addons_list-2.xml"
+var googleRepositoryURL = googleBaseURL + "repository-" + googleRepositoryVersion + " .xml"
+var googleAddonsListURL = googleBaseURL + "addons_list-2.xml"
 
+// An XML structure of a Android SDK addon list
 type AddonsLists struct {
 	XMLName    xml.Name      `xml:"http://schemas.android.com/sdk/android/addons-list/2 sdk-addons-list"`
 	AddonSite  []*addonSite  `xml:"http://schemas.android.com/sdk/android/addons-list/2 sdk-addon-site"`
@@ -20,35 +21,36 @@ type AddonsLists struct {
 
 type addonSite struct {
 	Name string `xml:"http://schemas.android.com/sdk/android/addons-list/2 name"`
-	Url  string `xml:"http://schemas.android.com/sdk/android/addons-list/2 url"`
+	URL  string `xml:"http://schemas.android.com/sdk/android/addons-list/2 url"`
 }
 
 type sysImgSite struct {
 	Name string `xml:"http://schemas.android.com/sdk/android/addons-list/2 name"`
-	Url  string `xml:"http://schemas.android.com/sdk/android/addons-list/2 url"`
+	URL  string `xml:"http://schemas.android.com/sdk/android/addons-list/2 url"`
 }
 
 //        <sdk:name>Google Inc.</sdk:name>
 //        <sdk:url>addon.xml</sdk:url>
 
-func AddonsListUrl() string {
+// Retuns the Android SDK Addons List URL
+func AddonsListURL() string {
 	return googleAddonsListUrl
 }
 
+// Does stuff
 func Init() ([]AddonsLists, error) {
 	var q []AddonsLists
 
-	response, err := http.Get(AddonsListUrl())
+	response, err := http.Get(AddonsListURL())
 	if err != nil {
 		return nil, err
-	} else {
-		defer response.Body.Close()
+	}
+	defer response.Body.Close()
 
-		xmlFile := response.Body
-		if err := xml.NewDecoder(xmlFile).Decode(&q); err != nil {
-			log.Fatal(err)
-			os.Exit(1)
-		}
+	xmlFile := response.Body
+	if err := xml.NewDecoder(xmlFile).Decode(&q); err != nil {
+		log.Fatal(err)
+		os.Exit(1)
 	}
 
 	return q, nil

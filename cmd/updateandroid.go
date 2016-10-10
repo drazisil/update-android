@@ -16,7 +16,7 @@ func main() {
 	//        os.Exit(1)
 	//    }
 
-	response, err := http.Get(updateandroid.AddonsListUrl())
+	response, err := http.Get(updateandroid.AddonsListURL())
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(1)
