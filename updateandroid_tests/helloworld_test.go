@@ -1,4 +1,4 @@
-package updateandroid-tests
+package updateandroidtests
 
 import (
 	"testing"
