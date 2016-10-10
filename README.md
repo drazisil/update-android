@@ -2,6 +2,7 @@
 An independent Android SDK / NDK updator
 
 master: [![CircleCI](https://circleci.com/gh/drazisil/update-android.svg?style=svg)](https://circleci.com/gh/drazisil/update-android)
+dev: [![CircleCI](https://circleci.com/gh/drazisil/update-android/tree/dev.svg?style=svg)](https://circleci.com/gh/drazisil/update-android/tree/dev)
 
 A replacement for the Android SDK commandline tools, written in Clojure
 
