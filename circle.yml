@@ -1,4 +1,4 @@
 test:
   override:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit
-    - go get github.com/jstemmer/go-junit-report && go test -v -race -cover ./... | go-junit-report > $CIRCLE_TEST_REPORTS/junit/test-results.xml
+    - go get github.com/jstemmer/go-junit-report && go test -v -race -cover ./... | tee go-junit-report > $CIRCLE_TEST_REPORTS/junit/test-results.xml
