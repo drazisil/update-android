@@ -8,7 +8,7 @@ import (
 )
 
 var googleRepositoryVersion = "12"
-var googleBaseUrl = "https://dl.google.com/android/repository/"
+var googleBaseURL = "https://dl.google.com/android/repository/"
 var googleRepositoryURL = googleBaseURL + "repository-" + googleRepositoryVersion + " .xml"
 var googleAddonsListURL = googleBaseURL + "addons_list-2.xml"
 
@@ -34,7 +34,7 @@ type sysImgSite struct {
 
 // Retuns the Android SDK Addons List URL
 func AddonsListURL() string {
-	return googleAddonsListUrl
+	return googleAddonsListURL
 }
 
 // Does stuff
