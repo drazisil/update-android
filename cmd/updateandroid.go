@@ -1,11 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"net/http"
-	"os"
-
 	"github.com/drazisil/updateandroid"
 )
 
@@ -16,11 +11,5 @@ func main() {
 	//        os.Exit(1)
 	//    }
 
-	response, err := http.Get(updateandroid.AddonsListURL())
-	if err != nil {
-		log.Fatal(err)
-		os.Exit(1)
-	}
-
-	fmt.Printf("%#v\n", response)
+	updateandroid.AddonSitesList()
 }
