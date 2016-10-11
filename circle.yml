@@ -1,3 +1,6 @@
+dependencies:
+  post:
+    - go build -v cmd/updateandroid.go
 test:
   override:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit
@@ -7,6 +10,5 @@ test:
     #- go get github.com/jstemmer/go-junit-report && go test -v -race -cover ./... | go-junit-report > $CIRCLE_TEST_REPORTS/junit/test-results.xml
   post:
     - godoc -html github.com/drazisil/updateandroid > $CIRCLE_TEST_REPORTS/index.html
-    - ls
-    - ls -r $GOPATH/bin
+    - ./updateandroid
 
