@@ -3,7 +3,7 @@ experimental:
     version: 0.1
     executorType: docker
     containerInfo:
-      - image: docker/golang:1.7.1
+      - image: golang:1.7.1
     stages:
       build:
         workDir: /home/ubuntu/
