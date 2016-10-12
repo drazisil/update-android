@@ -6,7 +6,7 @@ experimental:
       - image: golang:1.7.1
     stages:
       build:
-        workDir: /home/ubuntu/
+        workDir: /go/src/github.com/drazisil/updateandroid
         steps:
           - type: checkout
-            path: /go/src/app
+            path: /go/src/github.com/drazisil/updateandroid
