@@ -10,3 +10,5 @@ experimental:
         steps:
           - type: checkout
             path: /go/src/github.com/drazisil/updateandroid
+          - type: shell
+            command: ls
