@@ -1,14 +1,25 @@
-dependencies:
-  post:
-    - go build -v cmd/updateandroid.go
-test:
-  override:
-    - mkdir -p $CIRCLE_TEST_REPORTS/junit
-    - go get github.com/jstemmer/go-junit-report && go test -v -race -cover ./...
-
-    # Output JUnit XML
-    #- go get github.com/jstemmer/go-junit-report && go test -v -race -cover ./... | go-junit-report > $CIRCLE_TEST_REPORTS/junit/test-results.xml
-  post:
-    #- godoc -html github.com/drazisil/updateandroid > $CIRCLE_TEST_REPORTS/index.html
-    - ./updateandroid
-
+experimental:
+  picard:
+    version: 0.1
+    executorType: docker
+    containerInfo:
+      - image: golang:1.7.1
+    stages:
+      build:
+        workDir: /go/src/github.com/drazisil/updateandroid
+        steps:
+          - type: checkout
+            path: /go/src/github.com/drazisil/updateandroid
+          - type: shell
+            command: go get -d -v
+          - type: shell
+            command: go build -v cmd/updateandroid.go
+          - type: shell
+            command: mkdir -p ./junit
+          - type: shell
+            command: go get github.com/jstemmer/go-junit-report && go test -v -race -cover ./...
+          - type: shell
+            command: ./updateandroid
+          #- type: artifacts-store
+          #  path: /code/test-results
+          #  destination: prefix
