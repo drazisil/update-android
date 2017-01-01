@@ -1,7 +1,25 @@
-machine:
-  node:
-    version: 4.2.6
-    
-test:
-  override:
-    - android list sdk --all --extended > $CIRCLE_ARTIFACTS/sdkListing.txt
+experimental:
+  picard:
+    version: 0.1
+    executorType: docker
+    containerInfo:
+      - image: golang:1.7.1
+    stages:
+      build:
+        workDir: /go/src/github.com/drazisil/updateandroid
+        steps:
+          - type: checkout
+            path: /go/src/github.com/drazisil/updateandroid
+          - type: shell
+            command: go get -d -v
+          - type: shell
+            command: go build -v cmd/updateandroid.go
+          - type: shell
+            command: mkdir -p ./junit
+          - type: shell
+            command: go get github.com/jstemmer/go-junit-report && go test -v -race -cover ./...
+          - type: shell
+            command: ./updateandroid
+          #- type: artifacts-store
+          #  path: /code/test-results
+          #  destination: prefix
